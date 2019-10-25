@@ -8,13 +8,10 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     const { source, width, height } = query;
 
     context.log('HTTP trigger function starting processing a request.');
-    context.log(source, width, height);
 
     const resizedImage = await fetch(source)
         .then(res => res.buffer())
         .then((response) => {
-            context.log('FETCHED', response);
-            context.log('isBuffer', Buffer.isBuffer(response));
             return sharp(response)
                 .resize({
                     width: parseInt(width, 10),
@@ -24,8 +21,6 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
                 .webp({ lossless: true })
                 .toBuffer();
         });
-
-        context.log(resizedImage);
 
     context.log('HTTP trigger function processed a request.');
 
