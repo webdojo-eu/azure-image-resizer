@@ -9,8 +9,7 @@
     "start:host": "func start",
     "start": "npm run start:host & npm run watch",
     "build:production": "npm run prestart && npm prune --production",
-    "test": "echo \"No tests yet...\"",
-    "postinstall": "node-gyp -C node_modules/sharp clean configure rebuild"
+    "test": "echo \"No tests yet...\""
   },
   "dependencies": {
     "sharp": "0.23.1",
